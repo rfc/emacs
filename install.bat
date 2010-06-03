@@ -12,6 +12,7 @@ echo Compiling...
 %EMACS%\emacs.exe -batch -f batch-byte-compile "%APPDATA%\.emacs.d\init.el"
 %EMACS%\emacs.exe -batch -f batch-byte-compile "%APPDATA%\.emacs.d\init-display.el"
 %EMACS%\emacs.exe -batch -f batch-byte-compile "%APPDATA%\.emacs.d\init-cedet.el"
+%EMACS%\emacs.exe -batch -f batch-byte-compile "%APPDATA%\.emacs.d\init-cc.el"
 set EMACS=
 echo.
 echo Done.
