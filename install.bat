@@ -19,6 +19,7 @@ echo Compiling...
 %EMACS%\emacs.exe -batch -f batch-byte-compile "%APPDATA%\.emacs.d\init-cc.el"
 %EMACS%\emacs.exe -batch -f batch-byte-compile "%APPDATA%\.emacs.d\init-ruby.el"
 %EMACS%\emacs.exe -batch -f batch-byte-compile "%APPDATA%\.emacs.d\init-java.el"
+%EMACS%\emacs.exe -batch -f batch-byte-compile "%APPDATA%\.emacs.d\linum+.el"
 %EMACS%\emacs.exe -batch -f batch-byte-compile "%APPDATA%\.emacs.d\elpa\package.el"
 set EMACS=
 echo.
