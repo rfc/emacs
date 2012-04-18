@@ -22,6 +22,7 @@ echo Compiling...
 %EMACS%\emacs.exe -batch -f batch-byte-compile "%APPDATA%\.emacs.d\init-python.el"
 %EMACS%\emacs.exe -batch -f batch-byte-compile "%APPDATA%\.emacs.d\linum+.el"
 %EMACS%\emacs.exe -batch -f batch-byte-compile "%APPDATA%\.emacs.d\lambda-mode.el"
+%EMACS%\emacs.exe -batch -f batch-byte-compile "%APPDATA%\.emacs.d\python-mode.el"
 %EMACS%\emacs.exe -batch -f batch-byte-compile "%APPDATA%\.emacs.d\elpa\package.el"
 set EMACS=
 echo.
