@@ -1,5 +1,5 @@
 @echo off
-set EMACS=C:\Compiler\emacs-23.2\bin
+set EMACS=C:\Compiler\emacs-23.4\bin
 echo ================================
 echo  Installing .emacs and .emacs.d
 echo ================================
