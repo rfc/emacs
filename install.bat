@@ -23,6 +23,10 @@ echo Compiling main scripts...
 %EMACS%\emacs.exe -batch -f batch-byte-compile "%APPDATA%\.emacs.d\init-ruby.el"
 %EMACS%\emacs.exe -batch -f batch-byte-compile "%APPDATA%\.emacs.d\init-python.el"
 
+echo Compile CEDET:
+echo - %EMACS%\emacs.exe -Q -l "%APPDATA%\.emacs.d\lisp\cedet\cedet-build.el" -f cedet-build
+
+
 set EMACS=
 echo.
 echo Done.
