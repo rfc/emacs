@@ -9,8 +9,10 @@ echo Copying .emacs
 xcopy /q /y /v ".emacs" "%APPDATA%\.emacs"
 echo Copying .emacs.d/*
 xcopy /q /y /v ".emacs.d\*.el" "%APPDATA%\.emacs.d\"
+echo Copying .emacs.d/lisp/*
+xcopy /q /y /v /s ".emacs.d\lisp\*" "%APPDATA%\.emacs.d\lisp\"
 
-echo Compiling...
+echo Compiling main scripts...
 %EMACS%\emacs.exe -batch -f batch-byte-compile "%APPDATA%\.emacs.d\custom.el"
 %EMACS%\emacs.exe -batch -f batch-byte-compile "%APPDATA%\.emacs.d\init.el"
 %EMACS%\emacs.exe -batch -f batch-byte-compile "%APPDATA%\.emacs.d\init-bindings.el"
