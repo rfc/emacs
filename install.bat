@@ -20,9 +20,11 @@ echo Compiling main scripts...
 %EMACS%\emacs.exe -batch -f batch-byte-compile "%APPDATA%\.emacs.d\init-cc.el"
 %EMACS%\emacs.exe -batch -f batch-byte-compile "%APPDATA%\.emacs.d\init-ruby.el"
 %EMACS%\emacs.exe -batch -f batch-byte-compile "%APPDATA%\.emacs.d\init-python.el"
-%EMACS%\emacs.exe -batch -f batch-byte-compile "%APPDATA%\.emacs.d\init-elpa.el"
 
-echo Compiling 3rd party scripts...
+:: Commented out scripts with warnings
+::%EMACS%\emacs.exe -batch -f batch-byte-compile "%APPDATA%\.emacs.d\init-elpa.el"
+
+::echo Compiling 3rd party scripts...
 ::%EMACS%\emacs.exe -batch -f batch-byte-compile "%APPDATA%\.emacs.d\lisp\window-numbering.el"
 ::%EMACS%\emacs.exe -batch -f batch-byte-compile "%APPDATA%\.emacs.d\lisp\package.el"
 
