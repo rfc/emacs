@@ -13,6 +13,8 @@ echo Copying .emacs.d/lisp/*
 xcopy /q /y /v /s ".emacs.d\lisp\*" "%APPDATA%\.emacs.d\lisp\"
 echo Creating .emacs.d/elpa/*
 if not exist "%APPDATA%\.emacs.d\elpa\" mkdir "%APPDATA%\.emacs.d\elpa\"
+echo Creating .emacs.d/snippets/*
+if not exist "%APPDATA%\.emacs.d\snippets\" mkdir "%APPDATA%\.emacs.d\snippets\"
 
 echo Compiling main scripts...
 %EMACS%\emacs.exe -batch -f batch-byte-compile "%APPDATA%\.emacs.d\custom.el"
@@ -31,7 +33,7 @@ echo Compiling main scripts...
 echo.
 echo POSTINSTALL:
 echo ------------
-echo 1. Build CEDET: %EMACS%\emacs.exe -Q -l "%APPDATA%\.emacs.d\lisp\cedet\cedet-build.el" -f cedet-build
+echo 1. Build CEDET: %EMACS%\emacs.exe -Q -l cedet-build.el -f cedet-build
 echo.
 
 set EMACS=
