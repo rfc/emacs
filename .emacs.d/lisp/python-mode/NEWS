@@ -1,5 +1,47 @@
 Python Mode News
 ================
+
+New in version 6.0.6
+--------------------
+
+- files inside a virtual machine made visible for pdbtrack
+  
+- new commands `py-toggle-split-windows-on-execute', ...-on, ...-off
+  `py-toggle-shell-switch-buffers-on-execute', ...-on, ...-off
+  allow `py-execute-buffer' etc. to split/not-split windows,
+  move cursor onto output or not
+
+- Behavior of C-u M-x `py-shell' closer to common shell
+
+  C-u 4 prompts for a buffer,
+  i.e. when a "*Python*" shell is running,
+  C-u M-x `py-shell' opens a "*Python<2>*" per default
+  C-u 2 M-x py-shell promts for command-arguments as known from 5th-series
+
+- `py-intend-tabs-mode' sets default of `indent-tabs-mode', lp:953765
+
+-- New boolean variable `py-intend-tabs-mode'
+  Permits value independent from Emacs-wide `indent-tabs-mode' 
+  Commands `py-toggle-indent-tabs-mode', ...-on, ...-off
+  menu PyTools "Toggle indent-tabs-mode"
+
+- Extended py-execute-... forms provided for "line"
+
+- new commands py-beginning/end-of-line
+  while introduced for internal reasons --because of it's
+  return values-- they allow repeats, i.e. when already
+  at end-of-line, jumping to next end etc. 
+
+- new boolean `py-force-py-shell-name-p'
+  When `t', execution with Python specified in `py-shell-name' is en  forced, shebang will have no effect. Default is nil.
+
+-  customizable `py-separator-char', a string, see report lp:975539
+  Precedes guessing when not empty, is returned by
+  function `py-separator-char'
+
+- nicer `org-cycle' behavior: when new `py-org-cycle-p' it `t',
+  command `org-cycle' is available at shift-TAB, <backtab>
+
 New in version 6.0.5
 --------------------
 

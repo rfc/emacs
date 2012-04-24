@@ -4,7 +4,7 @@
 from distutils.core import setup
 
 setup(name='python-mode.el',
-      version='6.0.5',
+      version='6.0.6',
       url='http://launchpad.net/python-mode',
       maintainer_email='andreas.roehler@online.de',
       maintainer='Andreas Roehler',
