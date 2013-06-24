@@ -26,7 +26,7 @@ REM You should have received a copy of the GNU General Public License along with
 REM GNU Emacs; see the file COPYING.  If not, write to the Free Software
 REM Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
-REM $Id: make.bat,v 1.30 2010/02/21 13:10:16 berndl Exp $
+REM $Id$
 
 REM ******************************************************
 REM *  Do not use make.bat when using Emacs >= 23.2!     *
@@ -44,7 +44,7 @@ REM Define here the correct paths to your (X)Emacs-executable and the
 REM required CEDET-package (use always FORWARD SLASHES in the paths!)
 
 
-set EMACS=C:/compiler/emacs/bin/emacs.exe
+set EMACS=C:/Programme/emacs-22.3/bin/emacs.exe
 set CEDET=../cedet
 
 REM Call "make" to byte-compile the ECB.

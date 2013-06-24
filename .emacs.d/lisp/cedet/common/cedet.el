@@ -81,7 +81,7 @@
   (require 'cl)
   )
 
-(defconst cedet-version "1.0"
+(defconst cedet-version "1.1"
   "Current version of CEDET.")
 
 (defconst cedet-emacs-min-version "22.1"
