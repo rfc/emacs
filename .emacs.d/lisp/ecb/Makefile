@@ -23,7 +23,7 @@
 # GNU Emacs; see the file COPYING.  If not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
-# $Id$
+# $Id: Makefile,v 1.119 2010/02/22 16:33:42 berndl Exp $
 
 
 # ========================================================================
@@ -51,8 +51,8 @@ EMACS=emacs
 # + If you use Emacs < 23.2 or if you want to use the author version of CEDET:
 #   Set this to the full path of your CEDET-installation.
 
-CEDET=
-#CEDET=~/projects/cedet-bzr
+#CEDET=
+CEDET=c:/Programme/emacs-23.1/site-lisp/package-development/cedet
 
 # You can set here more load-paths to arbitrary packages if you want. But
 # this is really not necessary!
@@ -118,7 +118,7 @@ INSTALLINFO=/usr/bin/install-info
 # ========================================================================
 
 
-# $Id$
+# $Id: Makefile,v 1.119 2010/02/22 16:33:42 berndl Exp $
 
 # For the ECB-maintainers: Change the version-number here and not
 # elsewhere!
@@ -126,18 +126,12 @@ ecb_VERSION=2.41
 
 include ecb-makedef.mk
 
-all: ecb autoloads online-help
-
 ecb: $(ecb_LISP_EL)
 	@echo "Byte-compiling ECB with LOADPATH=${LOADPATH} ..."
 	@$(RM) $(ecb_LISP_ELC) ecb-compile-script
 	@echo "(add-to-list 'load-path nil)" > ecb-compile-script
 	@if test ! -z "${CEDET}"; then\
-		if test -f $(CEDET)/cedet-devel-load.el ; then \
-		   echo "(load-file \"$(CEDET)/cedet-devel-load.el\")" >> ecb-compile-script; \
-		else \
-		   echo "(load-file \"$(CEDET)/common/cedet.el\")" >> ecb-compile-script; \
-		fi \
+	   echo "(load-file \"$(CEDET)/common/cedet.el\")" >> ecb-compile-script; \
 	else \
 	   echo "(semantic-mode 1)" >> ecb-compile-script; \
 	   echo "(require 'semantic/bovine/el)" >> ecb-compile-script; \
@@ -151,6 +145,8 @@ ecb: $(ecb_LISP_EL)
 	@echo "(setq debug-on-error t)" >> ecb-compile-script
 	$(EBATCH) -l ecb-compile-script --eval '(ecb-byte-compile t)'
 	@$(RM) ecb-compile-script
+
+all: ecb online-help
 
 online-help: $(ecb_TEXI)
 	@if test -x "$(MAKEINFO)"; then\
@@ -210,7 +206,7 @@ install-help: $(ecb_INFO_DIR)/$(ecb_INFO)
 
 
 clean:
-	@$(RM) $(ecb_LISP_ELC) ecb-compile-script ecb-autoloads.el*
+	@$(RM) $(ecb_LISP_ELC) ecb-compile-script
 
 # The targets below are only for maintaining the ECB-package.
 
@@ -239,9 +235,11 @@ prepversion:
 	  echo "w";				\
 	  echo "q") | ed -s $(ecb_TEXI) 1> /dev/null
 
-autoloads: ecb
+
+autoloads:
 	@$(RM) $(ecb_AUTOLOADS) $(ecb_AUTOLOADS)c
-	$(EBATCH) --eval "(add-to-list 'load-path nil)" -l ecb-autogen -f ecb-update-autoloads
+	$(EBATCH) -l ecb-autogen -f ecb-update-autoloads
+
 
 # builds the distribution file $(ecb_VERSION).tar.gz
 distrib: $(ecb_INFO_DIR)/$(ecb_INFO) prepversion autoloads ecb
