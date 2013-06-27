@@ -23,7 +23,7 @@
 ;; GNU Emacs; see the file COPYING.  If not, write to the Free Software
 ;; Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
-;; $Id$
+;; $Id: ecb-create-layout.el,v 1.38 2009/06/23 11:16:56 berndl Exp $
 
 ;;; Commentary:
 ;;
@@ -52,6 +52,7 @@
 (silentcomp-defvar vertical-divider-map)
 (silentcomp-defvar modeline-map)
 ;; Emacs 21.X stuff
+(silentcomp-defvar automatic-hscrolling)
 (silentcomp-defvar before-make-frame-hook)
 (silentcomp-defvar after-make-frame-functions)
 ;; First loaded during activated ECB
@@ -259,9 +260,9 @@ other other frame!"
   "Cancel layout-creation without saving the layout."
   (interactive)
   (when (ecb-create-layout-frame-ok)
-    (ecb-create-layout-clear-all (called-interactively-p 'any))
+    (ecb-create-layout-clear-all (interactive-p))
     (message "ECB Layout Creation canceled - the layout is not saved!")
-    (and (called-interactively-p 'any) (ecb-activate))))
+    (and (interactive-p) (ecb-activate))))
 
 (defun ecb-create-layout-clear-all (&optional delete-frame)
   "Resets all stuff to state before `ecb-create-new-layout' was called. If
@@ -284,7 +285,7 @@ DELETE-FRAME is not nil then the new created frame will be deleted and the
             ecb-create-layout-old-minor-mode-map-alist))
   ;; restore horiz. scrolling
   (unless ecb-running-xemacs
-    (setq auto-hscroll-mode ecb-create-layout-old-hscroll))
+    (setq automatic-hscrolling ecb-create-layout-old-hscroll))
   ;; for XEmacs restore these maps
   (if ecb-running-xemacs
       (progn
@@ -312,7 +313,7 @@ DELETE-FRAME is not nil then the new created frame will be deleted and the
   (interactive)
   (when (ecb-create-layout-frame-ok)
     (if (ecb-create-layout-ready-for-save-p)
-        (let ((delete-frame (called-interactively-p 'any)))
+        (let ((delete-frame (interactive-p)))
           ;; if an error occurs during `ecb-create-layout-save-layout' or the
           ;; user hits C-q we must clean the layout creation stuff!
           (unwind-protect
@@ -464,7 +465,7 @@ DELETE-FRAME is not nil then the new created frame will be deleted and the
                          (concat "ECB " new-type) nil t)
       ;; setting the new buffer type in the buffer itself
       (ecb-create-layout-set-buffer-type new-type)
-      (when (called-interactively-p 'any)
+      (when (interactive-p)
         (ecb-create-layout-gen-lisp-for-buffer-type new-type)
         (ecb-create-layout-next-window))
       new-type)))
@@ -782,8 +783,8 @@ never selects the edit-window."
 
   ;; horiz. scrolling
   (unless ecb-running-xemacs
-    (setq ecb-create-layout-old-hscroll auto-hscroll-mode)
-    (setq auto-hscroll-mode nil))
+    (setq ecb-create-layout-old-hscroll automatic-hscrolling)
+    (setq automatic-hscrolling nil))
 
   ;; for XEmacs modeline- and vertical-divider maps
   (when ecb-running-xemacs
