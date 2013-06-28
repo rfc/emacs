@@ -5,6 +5,10 @@ echo ================================
 echo  Installing .emacs and .emacs.d
 echo ================================
 
+
+if exist "%HOME%\.emacs.d\*.elc" del "%HOME%\.emacs.d\*.elc" 
+if exist "%HOME%\.emacs.d\lisp\*.elc" del "%HOME%\.emacs.d\lisp\*.elc" 
+
 echo Copying .emacs
 xcopy /q /y /v ".emacs" "%HOME%\.emacs"
 echo Copying .emacs.d/*
