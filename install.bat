@@ -58,9 +58,7 @@ goto end
 :build
 echo.
 echo Building CEDET.
-::echo 1. Build CEDET: %EMACS%\emacs.exe -Q -l cedet-build.el -f cedet-build
-::echo.
-
+if not exist %INSTALLDIR%\.emacs.d\lisp\cedet\  goto error_cedet_missing
 pushd .
 %systemdrive%
 cd %INSTALLDIR%\.emacs.d\lisp\cedet\
@@ -75,6 +73,10 @@ goto eof
 :error_emacs_missing
 echo Error: Emacs executable not found (%EMACS%).
 goto eof
+
+:error_cedet_missing
+echo Warning: CEDET not found. This should not be an issue, unless you do not want to use Emacs CEDET.
+goto end
 
 :end
 set EMACS=
