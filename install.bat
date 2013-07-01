@@ -36,13 +36,22 @@ echo Compiling main scripts...
 %EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\init-cc.el"
 %EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\init-ruby.el"
 %EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\init-python.el"
+%EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\init-elpa.el"
+echo ATTN: Ignore init-elpa.el warning above.
 
+echo Compiling 3rd party scripts...
 :: Commented out scripts with warnings
-::%EMACS%\emacs.exe -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\init-elpa.el"
-
-::echo Compiling 3rd party scripts...
-::%EMACS%\emacs.exe -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\lisp\window-numbering.el"
-::%EMACS%\emacs.exe -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\lisp\package.el"
+::%EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\lisp\window-numbering.el"
+::%EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\lisp\package.el"
+::%EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\lisp\poptoshell.el
+::%EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\lisp\python-pep8.el
+::%EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\lisp\python-pylint.el
+::%EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\lisp\window-numbering.el
+::%EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\lisp\window-numbering-tests.el
+::%EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\lisp\zenburn.el
+%EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\lisp\cycle-buffer.el
+%EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\lisp\go-mode-load.el
+%EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\lisp\lambda-mode.el
 if "%1"=="build" goto build
 goto end
 
