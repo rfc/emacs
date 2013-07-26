@@ -1,6 +1,6 @@
 # About
 
-This is Chris Reyes' Emacs configuration file.
+This is Chris Reyes' Emacs configuration file for Emacs version 24.3.
 
 # Installation
 
