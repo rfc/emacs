@@ -49,9 +49,6 @@
 (if (eq window-system 'ns)
     (progn
       (tool-bar-mode 0)
-      (osx-key-mode -1)
-      (tabbar-mode 1)
-      (one-buffer-one-frame-mode -1)
     )
 )
 
