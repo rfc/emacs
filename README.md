@@ -4,7 +4,7 @@ This is Chris Reyes' Emacs configuration file.
 
 # Installation
 
-Windows7/8:
+Windows 7/8:
 
 1. Open install.bat and add your emacs (full path and filename) in "`set EMACS=`" entry.
 2. To install:
@@ -13,9 +13,9 @@ Windows7/8:
 
 Linux/Mac OSX:
 
-- use install.sh
+- Run "`install.sh`"
 
-# Keyboard Bindings
+# Shortcuts
 
 - `f2` - insert python breakpoint
 - `f4` - show/hide fill column indicator
