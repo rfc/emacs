@@ -8,7 +8,7 @@ if not exist %EMACS% goto error_emacs_missing
 
 :: Get OS version to determine install path.
 for /f "tokens=4-5 delims=. " %%i in ('ver') do set VERSION=%%i.%%j
-if "%version%" == "6.2" set INSTALLDIR=%APPDATA%
+if "%version%" GEQ "6.2" set INSTALLDIR=%APPDATA%
 if "%version%" == "6.1" set INSTALLDIR=%HOME%
 if "%version%" LSS "6.0" error_unsupported_os
 
