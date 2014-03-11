@@ -236,27 +236,27 @@
 ;; Load Yasnippet
 ;; http://www.emacswiki.org/emacs/Yasnippet
 ;; ===================================================
-(add-to-list 'load-path "~/.emacs.d/lisp/yasnippet/")
-(require 'yasnippet)
-(setq yas/root-directory '("~/.emacs.d/lisp/yasnippet/snippets/"))
-(require 'dropdown-list)
-(yas/initialize)
-(yas/load-directory "~/.emacs.d/lisp/yasnippet/snippets/")
-(mapc 'yas/load-directory yas/root-directory)
-(add-to-list 'auto-mode-alist '("^/snippets/" . snippet-mode))
-(add-to-list 'ac-sources 'ac-source-yasnippet)
-
-(defun reload-snippets ()
-  (interactive)
-  (yas-reload-all)
-  (yas-recompile-all)
-  (yas-reload-all)
-  (yas-recompile-all)
-)
-(defun snippet-mode-before-save ()
-  (interactive)
-  (when (eq major-mode 'snippet-mode) (reload-snippets)))
-(add-hook 'after-save-hook 'snippet-mode-before-save)
+;;(add-to-list 'load-path "~/.emacs.d/lisp/yasnippet/")
+;;(require 'yasnippet)
+;;(setq yas/root-directory '("~/.emacs.d/lisp/yasnippet/snippets/"))
+;;(require 'dropdown-list)
+;;(yas/initialize)
+;;(yas/load-directory "~/.emacs.d/lisp/yasnippet/snippets/")
+;;(mapc 'yas/load-directory yas/root-directory)
+;;(add-to-list 'auto-mode-alist '("^/snippets/" . snippet-mode))
+;;(add-to-list 'ac-sources 'ac-source-yasnippet)
+;;
+;;(defun reload-snippets ()
+;;  (interactive)
+;;  (yas-reload-all)
+;;  (yas-recompile-all)
+;;  (yas-reload-all)
+;;  (yas-recompile-all)
+;;)
+;;(defun snippet-mode-before-save ()
+;;  (interactive)
+;;  (when (eq major-mode 'snippet-mode) (reload-snippets)))
+;;(add-hook 'after-save-hook 'snippet-mode-before-save)
 
 ;; ===================================================
 ;; Load Magit
@@ -265,7 +265,7 @@
 (require 'magit)
 (if (eq system-type 'windows-nt)
 		(setq magit-git-executable "c:/program files/Git/bin/git.exe")
-	(setq magit-git-executable "/bin/git")
+	(setq magit-git-executable "/usr/bin/git")						;; correct in Slackware 14
 )
 
 ;; ===================================================
