@@ -14,7 +14,7 @@
 (require 'cl)
 
 (setq standard-indent 4)
-(setq-default tab-width 4)			
+(setq-default tab-width 4)
 (setq scroll-step 1)                ; scroll line by line
 (setq-default indent-tabs-mode nil) ; turn off tab character
 ;(mouse-wheel-mode t)                ; enable mouse wheel scrolling
@@ -80,18 +80,18 @@
 ;; ===================================================
 ;; Keyboard bindings
 ;; ===================================================
-(global-set-key (kbd "<C-tab>") 'bury-buffer)	; cycle buffers with Ctrl-TAB
+(global-set-key (kbd "<M-tab>") 'bury-buffer)	; cycle buffers with Ctrl-TAB
 (global-set-key [8]  'delete-backward-char)   	; C-h backspace
 (global-set-key (kbd "<f4>") 'fci-mode)
-(global-set-key (kbd "<C-f4>") 'highlight-80+-mode)
+(global-set-key (kbd "<M-f4>") 'highlight-80+-mode)
 (global-set-key (kbd "<f5>") 'linum-mode)
 (global-set-key (kbd "<f6>") 'ecb-activate)
 (global-set-key (kbd "<f7>") 'ecb-deactivate)
 (global-set-key (kbd "<f8>") 'speedbar)
 
 (require 'cycle-buffer)
-(global-set-key (kbd "<C-f11>") 'cycle-buffer)   			; cycle open files
-(global-set-key (kbd "<C-f12>") 'cycle-buffer-backward)
+(global-set-key (kbd "<M-f11>") 'cycle-buffer)   			; cycle open files
+(global-set-key (kbd "<M-f12>") 'cycle-buffer-backward)
 
 ;; Window Numbering
 ;; http://www.emacswiki.org/emacs/WindowNumberingMode
@@ -118,47 +118,47 @@
 ;(load-file "~/.emacs.d/lisp/cedet/contrib/cedet-contrib-load.el") 		; cannot be loaded in Windows due to inability to build
 ;(add-to-list  'Info-directory-list "~/.emacs.d/lisp/cedet/doc/info")
 (require 'cedet)
-(require 'cedet-files)
+;;(require 'cedet-files)
 
 ;; Semantic settings
 ;; ---------------------------------------------------
-(setq semantic-load-turn-useful-things-on t)
-(require 'semantic/bovine/c)
-(require 'semantic/bovine/gcc)
-(semantic-mode t)
-(global-ede-mode t)                      			; Enable the project management system
-(require 'semantic/sb)
-(require 'srecode)
-(setq semanticdb-default-save-directory "~/.emacs.d/.semanticdb")
+;;(setq semantic-load-turn-useful-things-on t)
+;;(require 'semantic/bovine/c)
+;;(require 'semantic/bovine/gcc)
+;;(semantic-mode t)
+;;(global-ede-mode t)                      			; Enable the project management system
+;;(require 'semantic/sb)
+;;(require 'srecode)
+;;(setq semanticdb-default-save-directory "~/.emacs.d/.semanticdb")
 
-(require 'semantic/ia)
-(setq-mode-local c-mode semanticdb-find-default-throttle '(project unloaded system recursive))
-(setq-mode-local c++-mode semanticdb-find-default-throttle '(project unloaded system recursive))
+;;(require 'semantic/ia)
+;;(setq-mode-local c-mode semanticdb-find-default-throttle '(project unloaded system recursive))
+;;(setq-mode-local c++-mode semanticdb-find-default-throttle '(project unloaded system recursive))
 
-(global-semanticdb-minor-mode 1)
-(global-semantic-stickyfunc-mode -1)
-(global-semantic-mru-bookmark-mode 1)
+;;(global-semanticdb-minor-mode 1)
+;;(global-semantic-stickyfunc-mode -1)
+;;(global-semantic-mru-bookmark-mode 1)
 
-(global-semantic-idle-local-symbol-highlight-mode t)
-(global-semantic-idle-scheduler-mode t)
-(global-semantic-idle-completions-mode t)
-(global-semantic-idle-summary-mode t)
-(global-semantic-decoration-mode t)
-(global-semantic-highlight-func-mode t)
-(global-semantic-show-unmatched-syntax-mode t)
+;;(global-semantic-idle-local-symbol-highlight-mode t)
+;;(global-semantic-idle-scheduler-mode t)
+;;(global-semantic-idle-completions-mode t)
+;;(global-semantic-idle-summary-mode t)
+;;(global-semantic-decoration-mode t)
+;;(global-semantic-highlight-func-mode t)
+;;(global-semantic-show-unmatched-syntax-mode t)
 
-(add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
-(add-to-list 'semantic-default-submodes 'global-cedet-m3-minor-mode)
-(add-to-list 'semantic-default-submodes 'global-semantic-mru-bookmark-mode)
-(add-to-list 'semantic-default-submodes 'global-semantic-idle-local-symbol-highlight-mode)
-(add-to-list 'semantic-default-submodes 'global-semantic-idle-scheduler-mode)
-(add-to-list 'semantic-default-submodes 'global-semantic-idle-completions-mode)
-(add-to-list 'semantic-default-submodes 'global-semantic-idle-summary-mode)
-(add-to-list 'semantic-default-submodes 'global-semantic-decoration-mode)
+;;(add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
+;;(add-to-list 'semantic-default-submodes 'global-cedet-m3-minor-mode)
+;;(add-to-list 'semantic-default-submodes 'global-semantic-mru-bookmark-mode)
+;;(add-to-list 'semantic-default-submodes 'global-semantic-idle-local-symbol-highlight-mode)
+;;(add-to-list 'semantic-default-submodes 'global-semantic-idle-scheduler-mode)
+;;(add-to-list 'semantic-default-submodes 'global-semantic-idle-completions-mode)
+;;(add-to-list 'semantic-default-submodes 'global-semantic-idle-summary-mode)
+;;(add-to-list 'semantic-default-submodes 'global-semantic-decoration-mode)
 
-(defun my-semantic-hook ()
-  (imenu-add-to-menubar "TAGS"))
-(add-hook 'semantic-init-hooks 'my-semantic-hook)
+;;(defun my-semantic-hook ()
+;;  (imenu-add-to-menubar "TAGS"))
+;;(add-hook 'semantic-init-hooks 'my-semantic-hook)
 
 ;(global-semantic-tag-folding-mode 1)
 ;(require 'semantic-tag-folding)
@@ -261,44 +261,44 @@
 ;; ===================================================
 ;; Load Python
 ;; ===================================================
-(add-to-list 'load-path "~/.emacs.d/lisp/python-mode/")
-(require 'python-mode)
+;;(add-to-list 'load-path "~/.emacs.d/lisp/python-mode/")
+;;(require 'python-mode)
 
-(add-to-list 'load-path "~/.emacs.d/lisp/")
-(require 'ipython)
-(require 'tramp)
-(require 'python-pep8)
-(require 'python-pylint)
-(require 'lambda-mode)
-(add-hook 'python-mode-hook 'lambda-mode 1)
-(setq lambda-symbol (string (make-char 'greek-iso8859-7 107)))
-(add-hook 'python-mode-hook 'lambda-mode 1)
+;;(add-to-list 'load-path "~/.emacs.d/lisp/")
+;;(require 'ipython)
+;;(require 'tramp)
+;;(require 'python-pep8)
+;;(require 'python-pylint)
+;;(require 'lambda-mode)
+;;(add-hook 'python-mode-hook 'lambda-mode 1)
+;;(setq lambda-symbol (string (make-char 'greek-iso8859-7 107)))
+;;(add-hook 'python-mode-hook 'lambda-mode 1)
 
 ;; ===================================================
 ;; Load Go
 ;; ===================================================
-(require 'go-mode-load)
+;;(require 'go-mode-load)
 
 
 ;; ===================================================
 ;; Load Web-mode
 ;; ===================================================
-(require 'web-mode)
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-(setq web-mode-markup-indent-offset 4)
-(setq web-mode-css-indent-offset 4)
-(setq web-mode-code-indent-offset 4)
-(setq web-mode-indent-style 4)
+;;(require 'web-mode)
+;;(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+;;(setq web-mode-markup-indent-offset 4)
+;;(setq web-mode-css-indent-offset 4)
+;;(setq web-mode-code-indent-offset 4)
+;;(setq web-mode-indent-style 4)
 
 ;; ===================================================
 ;; Load external
 ;; ===================================================
 (require 'init-cc)
-(require 'init-python)
-(require 'poptoshell)
-(require 'flymake-cursor)
+;;(require 'init-python)
+;;(require 'poptoshell)
+;;(require 'flymake-cursor)
 
-(global-set-key "\M- " 'pop-to-shell)
+;;(global-set-key "\M- " 'pop-to-shell)
 
 ;; =============================================================================
 ;; .emacs ends
