@@ -90,8 +90,18 @@
 (global-set-key (kbd "<f8>") 'speedbar)
 
 (require 'cycle-buffer)
-(global-set-key (kbd "<C-f11>") 'cycle-buffer)   			; cycle open files
-(global-set-key (kbd "<C-f12>") 'cycle-buffer-backward)
+(if (eq system-type 'darwin)
+  (progn
+    (global-set-key (kbd "<C-f11>") 'cycle-buffer)   			; cycle open files
+    (global-set-key (kbd "<C-f12>") 'cycle-buffer-backward)
+  )
+)
+(if (not (eq system-type 'darwin))
+  (progn
+    (global-set-key (kbd "<f11>") 'cycle-buffer)   			; cycle open files
+    (global-set-key (kbd "<f12>") 'cycle-buffer-backward)
+  )
+)
 
 ;; Window Numbering
 ;; http://www.emacswiki.org/emacs/WindowNumberingMode
