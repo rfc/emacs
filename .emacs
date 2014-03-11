@@ -80,7 +80,7 @@
 ;; ===================================================
 ;; Keyboard bindings
 ;; ===================================================
-(global-set-key (kbd "<M-tab>") 'bury-buffer)	; cycle buffers with Ctrl-TAB
+(global-set-key (kbd "<C-tab>") 'bury-buffer)	; cycle buffers with Ctrl-TAB
 (global-set-key [8]  'delete-backward-char)   	; C-h backspace
 (global-set-key (kbd "<f4>") 'fci-mode)
 (global-set-key (kbd "<M-f4>") 'highlight-80+-mode)
@@ -90,8 +90,8 @@
 (global-set-key (kbd "<f8>") 'speedbar)
 
 (require 'cycle-buffer)
-(global-set-key (kbd "<M-f11>") 'cycle-buffer)   			; cycle open files
-(global-set-key (kbd "<M-f12>") 'cycle-buffer-backward)
+(global-set-key (kbd "<C-f11>") 'cycle-buffer)   			; cycle open files
+(global-set-key (kbd "<C-f12>") 'cycle-buffer-backward)
 
 ;; Window Numbering
 ;; http://www.emacswiki.org/emacs/WindowNumberingMode
