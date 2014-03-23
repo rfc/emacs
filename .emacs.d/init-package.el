@@ -32,5 +32,3 @@
 (require-package 'ruby-mode)
 (require-package 'yasnippet)
 (require-package 'zenburn-theme)
-
-(provide 'init-package)

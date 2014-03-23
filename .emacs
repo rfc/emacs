@@ -109,17 +109,15 @@
 (require 'window-numbering)
 (window-numbering-mode t)
 
-;; Load MELPA
+;; Use Package Manager (MELPA)
 ;; ===================================================
-(require 'init-package)
+(load "init-package")
 
 (require 'highlight-parentheses)
 (require 'highlight-80+)
 (require 'zenburn-theme)
 
-;; ===================================================
 ;; Load CEDET
-;; http://cedet.sourceforge.net
 ;; ===================================================
 (require 'cedet)
 
@@ -275,7 +273,7 @@
 ;; ===================================================
 ;; Load external
 ;; ===================================================
-(require 'init-cc)
+(load "init-cc")
 ;;(require 'init-python)
 ;;(require 'poptoshell)
 ;;(require 'flymake-cursor)

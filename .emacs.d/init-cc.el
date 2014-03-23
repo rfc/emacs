@@ -49,4 +49,3 @@
     (font-lock-add-keywords nil
     '(("\\<\\(FIXME\\|TODO\\|BUG\\):" 1 font-lock-warning-face t)))))
     
-(provide 'init-cc) 
