@@ -2,12 +2,13 @@
 ;; init-elpa.el
 ;; =============================================================================
 
-(defvar starter-kit-packages (list 	'ruby-mode
-									'inf-ruby
-									'highlight-80+
+(defvar starter-kit-packages (list 	'highlight-80+
 									'highlight-parentheses
 									'highlight-symbol
+									'inf-ruby
+									'js2-mode
 									'magit
+									'ruby-mode
 									'yasnippet-bundle
 									'zenburn)
   "Libraries that should be installed by default.")
