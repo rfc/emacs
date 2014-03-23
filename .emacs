@@ -121,11 +121,7 @@
 ;; Load CEDET
 ;; http://cedet.sourceforge.net
 ;; ===================================================
-;(load-file "~/.emacs.d/lisp/cedet/cedet-devel-load.el")
-;(load-file "~/.emacs.d/lisp/cedet/contrib/cedet-contrib-load.el") 		; cannot be loaded in Windows due to inability to build
-;(add-to-list  'Info-directory-list "~/.emacs.d/lisp/cedet/doc/info")
 (require 'cedet)
-;;(require 'cedet-files)
 
 ;; Semantic settings
 ;; ---------------------------------------------------
@@ -180,7 +176,6 @@
 ;; Load ECB
 ;; ===================================================
 (require 'ecb)
-;(require 'ecb-autoloads)
 
 ;; ECB compile window
 ;; ---------------------------------------------------
@@ -299,7 +294,6 @@
  ;; If there is more than one, they won't work right.
  '(inhibit-startup-screen t)
  '(current-language-environment "English")
- '(ecb-options-version "2.40")
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
