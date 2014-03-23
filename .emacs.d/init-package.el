@@ -28,8 +28,9 @@
 (package-initialize)
 
 (require-package 'yasnippet)
-(require-package 'auto-complete)       ;; auto completion
-(require-package 'auto-complete-clang) ;; auto completion for C++ using CLang
+(require-package 'auto-complete)
+(require-package 'auto-complete-clang)
+(require-package 'ecb)
 (require-package 'magit)
 (require-package 'highlight-80+)
 (require-package 'highlight-parentheses)

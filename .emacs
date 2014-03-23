@@ -178,9 +178,7 @@
 
 ;; ===================================================
 ;; Load ECB
-;; http://alexott.blogspot.com.au/2012/06/ecb-fresh-emacscedet.html
 ;; ===================================================
-(add-to-list 'load-path "~/.emacs.d/lisp/ecb/")
 (require 'ecb)
 ;(require 'ecb-autoloads)
 
