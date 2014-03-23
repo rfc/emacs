@@ -21,17 +21,16 @@
 
 (package-initialize)
 
-(require-package 'yasnippet)
 (require-package 'auto-complete)
 (require-package 'auto-complete-clang)
 (require-package 'ecb)
-(require-package 'magit)
 (require-package 'highlight-80+)
 (require-package 'highlight-parentheses)
 (require-package 'highlight-symbol)
 (require-package 'inf-ruby)
-(require-package 'ruby-mode)
 (require-package 'magit)
+(require-package 'ruby-mode)
+(require-package 'yasnippet)
 (require-package 'zenburn-theme)
 
 (provide 'init-package)
