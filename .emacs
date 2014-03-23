@@ -109,16 +109,13 @@
 (require 'window-numbering)
 (window-numbering-mode t)
 
-;; Set Color Theme
-;; ---------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/lisp/color-theme/")
-(require 'color-theme)
-(require 'zenburn)
-(eval-after-load "color-theme"
-  '(progn
-  	 (setq color-theme-is-global t)
-     (color-theme-initialize)
-     (color-theme-zenburn)))
+;; Load MELPA
+;; ===================================================
+(require 'init-package)
+
+(require 'highlight-parentheses)
+(require 'highlight-80+)
+(require 'zenburn-theme)
 
 ;; ===================================================
 ;; Load CEDET
@@ -202,21 +199,6 @@
 (setq ecb-vc-enable-support t)      ;; show versioning status
 (setq ecb-history-sort-method nil)  ;; no sorting, recently used buffers on top
 (setq ecb-tip-of-the-day nil)
-
-;; ===================================================
-;; Load ELPA
-;; http://tromey.com/elpa/
-;; ===================================================
-(when
-    (load
-     (expand-file-name "~/.emacs.d/lisp/package.el"))
-  (package-initialize)
-  (require 'init-elpa))
-
-;; Highlighting (install via ELPA)
-;; ---------------------------------------------------
-(require 'highlight-parentheses)
-(require 'highlight-80+)
 
 ;; ===================================================
 ;; Load Autocomplete

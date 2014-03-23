@@ -32,7 +32,7 @@ if not exist "%INSTALLDIR%\.emacs.d\snippets\" mkdir "%INSTALLDIR%\.emacs.d\snip
 
 echo Compiling main scripts...
 %EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\init-cc.el"
-%EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\init-elpa.el"
+%EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\init-package.el"
 %EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\init-js.el"
 %EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\init-python.el"
 %EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\init-ruby.el"
