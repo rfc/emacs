@@ -19,12 +19,6 @@
       (package-refresh-contents)
       (require-package package min-version t)))))
 
-(when (< emacs-major-version 24)
-  (add-to-list 'package-load-list '(zenburn-theme nil) 'append))
-(when (>= emacs-major-version 24)
-  (add-to-list 'package-load-list '(color-theme nil) 'append)
-  (add-to-list 'package-load-list '(zenburn nil) 'append))
-  
 (package-initialize)
 
 (require-package 'yasnippet)
@@ -38,11 +32,6 @@
 (require-package 'inf-ruby)
 (require-package 'ruby-mode)
 (require-package 'magit)
-
-(when (< emacs-major-version 24)
-  (require-package 'color-theme)
-  (require-package 'zenburn))
-(when (>= emacs-major-version 24)
-  (require-package 'zenburn-theme))
+(require-package 'zenburn-theme)
 
 (provide 'init-package)
