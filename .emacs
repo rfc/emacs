@@ -211,7 +211,6 @@
 ;; Load Yasnippet
 ;; http://www.emacswiki.org/emacs/Yasnippet
 ;; ===================================================
-;;(add-to-list 'load-path "~/.emacs.d/lisp/yasnippet/")
 (require 'yasnippet)
 ;;(setq yas/root-directory '("~/.emacs.d/lisp/yasnippet/snippets/"))
 ;;(require 'dropdown-list)
@@ -236,7 +235,6 @@
 ;; ===================================================
 ;; Load Magit
 ;; ===================================================
-(add-to-list 'load-path "~/.emacs.d/lisp/magit/")
 (require 'magit)
 (if (eq system-type 'windows-nt)
 		(setq magit-git-executable "c:/program files/Git/bin/git.exe")
@@ -246,7 +244,6 @@
 ;; ===================================================
 ;; Load Python
 ;; ===================================================
-;;(add-to-list 'load-path "~/.emacs.d/lisp/python-mode/")
 (require 'python-mode)
 
 ;;(add-to-list 'load-path "~/.emacs.d/lisp/")
