@@ -212,7 +212,7 @@
 ;; http://www.emacswiki.org/emacs/Yasnippet
 ;; ===================================================
 ;;(add-to-list 'load-path "~/.emacs.d/lisp/yasnippet/")
-;;(require 'yasnippet)
+(require 'yasnippet)
 ;;(setq yas/root-directory '("~/.emacs.d/lisp/yasnippet/snippets/"))
 ;;(require 'dropdown-list)
 ;;(yas/initialize)
@@ -247,7 +247,7 @@
 ;; Load Python
 ;; ===================================================
 ;;(add-to-list 'load-path "~/.emacs.d/lisp/python-mode/")
-;;(require 'python-mode)
+(require 'python-mode)
 
 ;;(add-to-list 'load-path "~/.emacs.d/lisp/")
 ;;(require 'ipython)
