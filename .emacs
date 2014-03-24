@@ -70,7 +70,7 @@
 (setq-default fci-rule-color "white")
 (setq-default fci-rule-character-color "gray")
 
-(add-to-list 'default-frame-alist '(font .  "Inconsolata" ))
+(add-to-list 'default-frame-alist '(font .  "DejaVu Sans Mono-8" ))
 
 (require 'whitespace)
 
