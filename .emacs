@@ -9,7 +9,7 @@
 
 ;; General settings
 ;; ===================================================
-(require 'cl)
+;(require 'cl)
 
 (setq standard-indent 4)
 (setq-default tab-width 4)
@@ -70,7 +70,7 @@
 (setq-default fci-rule-color "white")
 (setq-default fci-rule-character-color "gray")
 
-(add-to-list 'default-frame-alist '(font .  "DejaVu Sans Mono-8" ))
+(add-to-list 'default-frame-alist '(font .  "DejaVu Sans Mono-10" ))
 
 (require 'whitespace)
 
@@ -109,7 +109,6 @@
 (load "init-package")
 
 (require 'highlight-parentheses)
-(require 'highlight-80+)
 (require 'zenburn-theme)
 
 ;; Load CEDET
