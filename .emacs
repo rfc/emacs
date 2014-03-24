@@ -66,9 +66,9 @@
 
 (require 'fill-column-indicator)
 (setq-default fci-rule-column 80)
-(setq fci-rule-width 1)
-(setq fci-rule-color "white")
-(setq fci-rule-character-color "white")
+(setq-default fci-rule-use-dashes 1)
+(setq-default fci-rule-color "white")
+(setq-default fci-rule-character-color "gray")
 
 (require 'whitespace)
 
