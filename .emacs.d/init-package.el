@@ -35,3 +35,9 @@
 (require-package 'ruby-mode)
 (require-package 'yasnippet)
 (require-package 'zenburn-theme)
+
+(require-package 'autopair)
+(require-package 'go-mode)
+(require-package 'flymake-cursor)
+(require-package 'web-mode)
+(require-package 'window-numbering)
