@@ -40,14 +40,11 @@
 		(setq
 		ns-command-filter-modifier 'meta
 		ns-alternate-modifier nil
-		ns-use-mac-modifier-symbols nil)
-    )
-)
+		ns-use-mac-modifier-symbols nil)))
+		
 (if (eq window-system 'ns)
     (progn
-		(tool-bar-mode 0)
-    )
-)
+		(tool-bar-mode 0)))
 
 ;; Display settings
 ;; ===================================================
@@ -62,7 +59,7 @@
 	display-time-day-and-date t)
 (display-time)
 
-(setq frame-title-format '(buffer-file-name "%b (%f)" "%b"))
+(setq frame-title-format '(buffer-file-name "%f" (dired-directory dired-directory "%b")))
 
 (require 'fill-column-indicator)
 (setq-default fci-rule-column 80)
@@ -70,7 +67,17 @@
 (setq-default fci-rule-color "white")
 (setq-default fci-rule-character-color "gray")
 
-(add-to-list 'default-frame-alist '(font .  "DejaVu Sans Mono-10" ))
+;(add-to-list 'default-frame-alist '(font .  "DejaVu Sans Mono-10" ))
+;(set-frame-font "DejaVu Sans Mono-10" nil t)
+(if (eq system-type 'darwin)
+		(progn
+			(setq
+			set-face-attribute 'default nil :family "Consolas"
+			set-face-attribute 'default nil :height 100))
+	(set-face-attribute 'default nil :family "Terminus")
+	(set-face-attribute 'default nil :height 100))
+
+(when window-system (set-frame-size (selected-frame) 140 70))
 
 (require 'whitespace)
 
@@ -108,6 +115,7 @@
 ;; ===================================================
 (load "init-package")
 
+(require 'dropdown-list)
 (require 'highlight-parentheses)
 (require 'zenburn-theme)
 
@@ -198,7 +206,6 @@
 ;; ===================================================
 (require 'yasnippet)
 (setq yas/root-directory '("~/.emacs.d/lisp/yasnippet/snippets/"))
-(require 'dropdown-list)
 ;(yas/initialize)
 ;(yas/load-directory "~/.emacs.d/lisp/yasnippet/snippets/")
 ;(mapc 'yas/load-directory yas/root-directory)
