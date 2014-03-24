@@ -29,6 +29,7 @@
 (require-package 'highlight-symbol)
 (require-package 'inf-ruby)
 (require-package 'magit)
+(require-package 'python-mode)
 (require-package 'ruby-mode)
 (require-package 'yasnippet)
 (require-package 'zenburn-theme)

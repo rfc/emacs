@@ -2,13 +2,11 @@
 ;; .emacs
 ;; =============================================================================
 
-;; ===================================================
 ;; Load paths
 ;; ===================================================
 (setq load-path (cons "~/.emacs.d/" load-path))
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
-;; ===================================================
 ;; General settings
 ;; ===================================================
 (require 'cl)
@@ -31,7 +29,6 @@
 (global-auto-revert-mode t)			; auto reload files
 (setq show-paren-delay 0)
 
-;; ===================================================
 ;; Mac OSX
 ;; ===================================================
 (if (eq system-type 'darwin)
@@ -52,7 +49,6 @@
     )
 )
 
-;; ===================================================
 ;; Display settings
 ;; ===================================================
 (setq inhibit-startup-echo-area-message t)
@@ -75,7 +71,7 @@
 (setq fci-rule-character-color "white")
 
 (require 'whitespace)
-;; ===================================================
+
 ;; Keyboard bindings
 ;; ===================================================
 (global-set-key (kbd "<C-tab>") 'bury-buffer)	; cycle buffers with Ctrl-TAB
@@ -83,8 +79,8 @@
 (global-set-key (kbd "<f4>") 'fci-mode)
 (global-set-key (kbd "<f5>") 'whitespace-mode)
 (global-set-key (kbd "<f6>") 'linum-mode)
-(global-set-key (kbd "<f7>") 'ecb-activate)
-(global-set-key (kbd "<C-f7>") 'ecb-deactivate)
+;(global-set-key (kbd "<f7>") 'ecb-activate)
+;(global-set-key (kbd "<C-f7>") 'ecb-deactivate)
 (global-set-key (kbd "<f9>") 'speedbar)
 
 (require 'cycle-buffer)
@@ -172,23 +168,19 @@
 ;; ===================================================
 (require 'ecb)
 
-;; ECB compile window
-;; ---------------------------------------------------
+(setq ecb-vc-enable-support t)
+(setq ecb-history-sort-method nil) 
+(setq ecb-tip-of-the-day nil)
+
 (setq ecb-compile-window-height 6)
 (setq ecb-compile-window-width (quote edit-window))
 (setq ecb-windows-width 0.2)
 
-;; ECB settings
-;; ---------------------------------------------------
 (if (eq system-type 'windows-nt)
 		(setq ecb-source-path (quote (("/" #("/" 0 1 (help-echo tree-buffer-help-echo-fn mouse-face highlight))) "D:\workspace")))
 	(setq ecb-source-path (quote (("/" #("/" 0 1 (help-echo tree-buffer-help-echo-fn mouse-face highlight))) "~/workspace")))
 )
-(setq ecb-vc-enable-support t)      ;; show versioning status
-(setq ecb-history-sort-method nil)  ;; no sorting, recently used buffers on top
-(setq ecb-tip-of-the-day nil)
 
-;; ===================================================
 ;; Load Autocomplete
 ;; ===================================================
 (require 'auto-complete)
@@ -201,9 +193,7 @@
 (setq ac-auto-start 2)				; auto complete after two chars of word
 (setq ac-ignore-case nil)			; case sensitivity
 
-;; ===================================================
 ;; Load Yasnippet
-;; http://www.emacswiki.org/emacs/Yasnippet
 ;; ===================================================
 (require 'yasnippet)
 ;;(setq yas/root-directory '("~/.emacs.d/lisp/yasnippet/snippets/"))
@@ -226,7 +216,6 @@
 ;;  (when (eq major-mode 'snippet-mode) (reload-snippets)))
 ;;(add-hook 'after-save-hook 'snippet-mode-before-save)
 
-;; ===================================================
 ;; Load Magit
 ;; ===================================================
 (require 'magit)
@@ -235,7 +224,6 @@
 	(setq magit-git-executable "/usr/bin/git")						;; correct in Slackware 14
 )
 
-;; ===================================================
 ;; Load Python
 ;; ===================================================
 (require 'python-mode)
@@ -250,13 +238,11 @@
 ;;(setq lambda-symbol (string (make-char 'greek-iso8859-7 107)))
 ;;(add-hook 'python-mode-hook 'lambda-mode 1)
 
-;; ===================================================
 ;; Load Go
 ;; ===================================================
 ;;(require 'go-mode-load)
 
 
-;; ===================================================
 ;; Load Web-mode
 ;; ===================================================
 ;;(require 'web-mode)
@@ -266,7 +252,6 @@
 ;;(setq web-mode-code-indent-offset 4)
 ;;(setq web-mode-indent-style 4)
 
-;; ===================================================
 ;; Load external
 ;; ===================================================
 (load "init-cc")
