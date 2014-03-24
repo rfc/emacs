@@ -197,14 +197,14 @@
 ;; Load Yasnippet
 ;; ===================================================
 (require 'yasnippet)
-;;(setq yas/root-directory '("~/.emacs.d/lisp/yasnippet/snippets/"))
-;;(require 'dropdown-list)
-;;(yas/initialize)
-;;(yas/load-directory "~/.emacs.d/lisp/yasnippet/snippets/")
-;;(mapc 'yas/load-directory yas/root-directory)
-;;(add-to-list 'auto-mode-alist '("^/snippets/" . snippet-mode))
-;;(add-to-list 'ac-sources 'ac-source-yasnippet)
-;;
+(setq yas/root-directory '("~/.emacs.d/lisp/yasnippet/snippets/"))
+(require 'dropdown-list)
+;(yas/initialize)
+;(yas/load-directory "~/.emacs.d/lisp/yasnippet/snippets/")
+;(mapc 'yas/load-directory yas/root-directory)
+;(add-to-list 'auto-mode-alist '("^/snippets/" . snippet-mode))
+;(add-to-list 'ac-sources 'ac-source-yasnippet)
+
 ;;(defun reload-snippets ()
 ;;  (interactive)
 ;;  (yas-reload-all)

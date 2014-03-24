@@ -23,6 +23,7 @@
 
 (require-package 'auto-complete)
 (require-package 'auto-complete-clang)
+(require-package 'dropdown-list)
 (require-package 'ecb)
 ;(require-package 'highlight-80+)         ; replace with whitespace-mode
 (require-package 'highlight-parentheses)
