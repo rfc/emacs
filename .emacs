@@ -70,6 +70,8 @@
 (setq-default fci-rule-color "white")
 (setq-default fci-rule-character-color "gray")
 
+(add-to-list 'default-frame-alist '(font .  "Inconsolata" ))
+
 (require 'whitespace)
 
 ;; Keyboard bindings
