@@ -22,33 +22,33 @@
 (setq auto-save-default nil)        ; no #autosave# files
 (line-number-mode 1)                ; Show line-number in the mode line
 (column-number-mode 1)              ; Show column-number in the mode line
-(menu-bar-mode nil)					; Remove menu bar
+(menu-bar-mode 0)					; Remove menu bar
 (fset 'yes-or-no-p 'y-or-n-p)       ; use y/n instead of yes/no
 (setq stack-trace-on-error t)
 (global-hl-line-mode 1)				; highlight line which has cursor
-(set-face-background 'hl-line "#575757")
+(set-face-background 'hl-line "#3e4446")
 (show-paren-mode 1)					; show matching parenthesis
 (global-auto-revert-mode t)			; auto reload files
 (setq show-paren-delay 0)
 
 ;; ===================================================
-;; Aquamacs
+;; Mac OSX
 ;; ===================================================
 (if (eq system-type 'darwin)
     (progn
-	(setq
-	 aquamacs-scratch-file nil
-	 initial-major-mode 'emacs-lisp-mode)
-
-	(setq
-	 ns-command-filter-modifier 'meta
-	 ns-alternate-modifier nil
-	 ns-use-mac-modifier-symbols nil)
+		(setq
+		aquamacs-scratch-file nil
+		initial-major-mode 'emacs-lisp-mode)
+		
+		(setq
+		ns-command-filter-modifier 'meta
+		ns-alternate-modifier nil
+		ns-use-mac-modifier-symbols nil)
     )
 )
 (if (eq window-system 'ns)
     (progn
-      (tool-bar-mode 0)
+		(tool-bar-mode 0)
     )
 )
 
@@ -68,22 +68,20 @@
 
 (setq frame-title-format '(buffer-file-name "%b (%f)" "%b"))
 
-(add-hook 'c-mode-hook              ; highlight very long lines
-  (lambda ()
-    (font-lock-add-keywords nil
-      '(("^[^\n]\\{80\\}\\(.*\\)$" 1 font-lock-warning-face t)))))
-
 (require 'fill-column-indicator)
 (setq-default fci-rule-column 80)
-(setq fci-rule-color "grey")
+(setq fci-rule-width 1)
+(setq fci-rule-color "white")
+(setq fci-rule-character-color "white")
 
+(require 'whitespace)
 ;; ===================================================
 ;; Keyboard bindings
 ;; ===================================================
 (global-set-key (kbd "<C-tab>") 'bury-buffer)	; cycle buffers with Ctrl-TAB
 (global-set-key [8]  'delete-backward-char)   	; C-h backspace
 (global-set-key (kbd "<f4>") 'fci-mode)
-(global-set-key (kbd "<M-f4>") 'highlight-80+-mode)
+(global-set-key (kbd "<M-f4>") 'whitespace-mode)
 (global-set-key (kbd "<f5>") 'linum-mode)
 (global-set-key (kbd "<f6>") 'ecb-activate)
 (global-set-key (kbd "<f7>") 'ecb-deactivate)
@@ -104,7 +102,6 @@
 )
 
 ;; Window Numbering
-;; http://www.emacswiki.org/emacs/WindowNumberingMode
 ;; ---------------------------------------------------
 (require 'window-numbering)
 (window-numbering-mode t)
@@ -194,7 +191,6 @@
 ;; ===================================================
 ;; Load Autocomplete
 ;; ===================================================
-(add-to-list 'load-path "~/.emacs.d/lisp/auto-complete/")
 (require 'auto-complete)
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/lisp/auto-complete/dict")
@@ -274,7 +270,8 @@
 ;; Load external
 ;; ===================================================
 (load "init-cc")
-;;(require 'init-python)
+(load "init-js")
+(load "init-python")
 ;;(require 'poptoshell)
 ;;(require 'flymake-cursor)
 

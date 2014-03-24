@@ -24,7 +24,7 @@
 (require-package 'auto-complete)
 (require-package 'auto-complete-clang)
 (require-package 'ecb)
-(require-package 'highlight-80+)
+;(require-package 'highlight-80+)         ; replace with whitespace-mode
 (require-package 'highlight-parentheses)
 (require-package 'highlight-symbol)
 (require-package 'inf-ruby)
