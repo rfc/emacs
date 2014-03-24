@@ -2,15 +2,11 @@
 ;; .emacs
 ;; =============================================================================
 
-;; Load paths
-;; ===================================================
 (setq load-path (cons "~/.emacs.d/" load-path))
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
 ;; General settings
 ;; ===================================================
-;(require 'cl)
-
 (setq standard-indent 4)
 (setq-default tab-width 4)
 (setq scroll-step 1)                ; scroll line by line
@@ -45,6 +41,14 @@
 (if (eq window-system 'ns)
     (progn
 		(tool-bar-mode 0)))
+
+;; Use Package Manager (MELPA)
+;; ===================================================
+(load "init-package")
+
+(require 'dropdown-list)
+(require 'highlight-parentheses)
+(require 'zenburn-theme)
 
 ;; Display settings
 ;; ===================================================
@@ -110,14 +114,6 @@
 ;; ---------------------------------------------------
 (require 'window-numbering)
 (window-numbering-mode t)
-
-;; Use Package Manager (MELPA)
-;; ===================================================
-(load "init-package")
-
-(require 'dropdown-list)
-(require 'highlight-parentheses)
-(require 'zenburn-theme)
 
 ;; Load CEDET
 ;; ===================================================
