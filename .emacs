@@ -81,11 +81,11 @@
 (global-set-key (kbd "<C-tab>") 'bury-buffer)	; cycle buffers with Ctrl-TAB
 (global-set-key [8]  'delete-backward-char)   	; C-h backspace
 (global-set-key (kbd "<f4>") 'fci-mode)
-(global-set-key (kbd "<M-f4>") 'whitespace-mode)
-(global-set-key (kbd "<f5>") 'linum-mode)
-(global-set-key (kbd "<f6>") 'ecb-activate)
-(global-set-key (kbd "<f7>") 'ecb-deactivate)
-(global-set-key (kbd "<f8>") 'speedbar)
+(global-set-key (kbd "<f5>") 'whitespace-mode)
+(global-set-key (kbd "<f6>") 'linum-mode)
+(global-set-key (kbd "<f7>") 'ecb-activate)
+(global-set-key (kbd "<C-f7>") 'ecb-deactivate)
+(global-set-key (kbd "<f9>") 'speedbar)
 
 (require 'cycle-buffer)
 (if (eq system-type 'darwin)
