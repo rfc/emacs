@@ -50,7 +50,6 @@ echo Compiling 3rd party scripts...
 %EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\lisp\cycle-buffer.el
 %EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\lisp\go-mode-load.el
 %EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\lisp\lambda-mode.el
-%EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\lisp\web-mode.el
 if "%1"=="build" goto build
 goto end
 

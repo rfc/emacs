@@ -81,7 +81,8 @@
 	(set-face-attribute 'default nil :family "Terminus")
 	(set-face-attribute 'default nil :height 100))
 
-(when window-system (set-frame-size (selected-frame) 140 70))
+(if (eq system-type 'windows-nt)
+	(set-frame-size (selected-frame) 140 70))
 
 (require 'whitespace)
 
@@ -100,15 +101,12 @@
 (if (eq system-type 'darwin)
   (progn
     (global-set-key (kbd "<C-f11>") 'cycle-buffer)   			; cycle open files
-    (global-set-key (kbd "<C-f12>") 'cycle-buffer-backward)
-  )
-)
+    (global-set-key (kbd "<C-f12>") 'cycle-buffer-backward)))
+	
 (if (not (eq system-type 'darwin))
   (progn
     (global-set-key (kbd "<f11>") 'cycle-buffer)   			; cycle open files
-    (global-set-key (kbd "<f12>") 'cycle-buffer-backward)
-  )
-)
+    (global-set-key (kbd "<f12>") 'cycle-buffer-backward)))
 
 ;; Window Numbering
 ;; ---------------------------------------------------
