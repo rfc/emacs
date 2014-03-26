@@ -1,7 +1,3 @@
-;; ============================================================================= 
-;; init-cc.el
-;; =============================================================================
-
 (require 'cc-mode)
 
 (setq-default c-basic-offset 4)
@@ -31,19 +27,16 @@
 (add-hook 'c-mode-common-hook 'my-c-mode-cedet-hook)
 
 ;; Show the current function in the mode line
-;; -------------------------------------------
 (add-hook 'c-mode-common-hook 
   (lambda ()
     (which-function-mode t)))
     
 ;; Switch between header and implementation
-;; -------------------------------------------
 (add-hook 'c-mode-common-hook
   (lambda() 
     (local-set-key  (kbd "C-c o") 'ff-find-other-file)))
 
 ;; Highlight FIXME, TODO, BUG
-;; -----------------------------------------
 (add-hook 'c-mode-common-hook
     (lambda ()
     (font-lock-add-keywords nil

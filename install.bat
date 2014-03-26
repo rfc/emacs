@@ -1,6 +1,7 @@
 ::
 :: install.bat - Install Emacs configuration files. (Win7/Win8 only)
 ::
+:: TODO: Convert to Makefile
 @echo off
 set EMACS=C:\Dev\emacs\bin\emacs.exe
 
@@ -31,23 +32,18 @@ echo Creating .emacs.d/snippets/*
 if not exist "%INSTALLDIR%\.emacs.d\snippets\" mkdir "%INSTALLDIR%\.emacs.d\snippets\"
 
 echo Compiling main scripts...
-%EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\init-cc.el"
-%EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\init-package.el"
-%EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\init-js.el"
-%EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\init-python.el"
-%EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\init-ruby.el"
-echo ATTN: Ignore init-elpa.el warning above.
+%EMACS% -batch --eval "(require 'package)" --eval "(package-initialize)" --eval "(byte-compile-file (expand-file-name \"~/.emacs.d/init-cc.el\")0)"
+%EMACS% -batch --eval "(require 'package)" --eval "(package-initialize)" --eval "(byte-compile-file (expand-file-name \"~/.emacs.d/init-package.el\")0)"
+%EMACS% -batch --eval "(require 'package)" --eval "(package-initialize)" --eval "(byte-compile-file (expand-file-name \"~/.emacs.d/init-js.el\")0)"
+%EMACS% -batch --eval "(require 'package)" --eval "(package-initialize)" --eval "(byte-compile-file (expand-file-name \"~/.emacs.d/init-python.el\")0)"
+%EMACS% -batch --eval "(require 'package)" --eval "(package-initialize)" --eval "(byte-compile-file (expand-file-name \"~/.emacs.d/init-ruby.el\")0)"
+
+::%EMACS% -batch --eval "(require 'package)" --eval "(package-initialize)" --eval "(byte-recompile-directory (expand-file-name \"~/.emacs.d/\")0)"
 
 echo Compiling 3rd party scripts...
 :: Commented out scripts with warnings
-::%EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\lisp\package.el"
 ::%EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\lisp\poptoshell.el
-::%EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\lisp\python-pep8.el
-::%EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\lisp\python-pylint.el
-::%EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\lisp\window-numbering.el
-::%EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\lisp\window-numbering-tests.el
-::%EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\lisp\zenburn.el
-%EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\lisp\cycle-buffer.el
+::MACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\lisp\cycle-buffer.el
 %EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\lisp\go-mode-load.el
 %EMACS% -batch -f batch-byte-compile "%INSTALLDIR%\.emacs.d\lisp\lambda-mode.el
 if "%1"=="build" goto build

@@ -1,6 +1,3 @@
-;; ============================================================================= 
-;; init-ruby.el
-;; =============================================================================
+(require 'rvm)
+(add-hook 'ruby-mode-hook (lambda () (rvm-activate-corresponding-ruby)))
 
-
-(provide 'init-ruby)

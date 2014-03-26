@@ -1,8 +1,5 @@
-;; ============================================================================= 
-;; init-package.el
-;; =============================================================================
-
 (require 'package)
+
 (setq package-archives '(("elpa" . "http://tromey.com/elpa/") 
                           ("gnu" . "http://elpa.gnu.org/packages/")
                           ("marmalade" . "http://marmalade-repo.org/packages/")
@@ -23,21 +20,19 @@
 
 (require-package 'auto-complete)
 (require-package 'auto-complete-clang)
+(require-package 'autopair)
 (require-package 'dropdown-list)
 (require-package 'ecb)
 (require-package 'fill-column-indicator)
-;(require-package 'highlight-80+)         ; replace with whitespace-mode
+(require-package 'flymake-cursor)
+(require-package 'go-mode)
 (require-package 'highlight-parentheses)
 (require-package 'highlight-symbol)
 (require-package 'inf-ruby)
 (require-package 'magit)
 (require-package 'python-mode)
 (require-package 'ruby-mode)
-(require-package 'yasnippet)
-(require-package 'zenburn-theme)
-
-(require-package 'autopair)
-(require-package 'go-mode)
-(require-package 'flymake-cursor)
 (require-package 'web-mode)
 (require-package 'window-numbering)
+(require-package 'yasnippet)
+(require-package 'zenburn-theme)

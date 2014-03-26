@@ -1,11 +1,17 @@
-;; ============================================================================= 
-;; init-python.el
-;; =============================================================================
+(require 'python-mode)
+
+;;(require 'ipython)
+;;(require 'tramp)
+;;(require 'python-pep8)
+;;(require 'python-pylint)
+;;(require 'lambda-mode)
+;;(add-hook 'python-mode-hook 'lambda-mode 1)
+;;(setq lambda-symbol (string (make-char 'greek-iso8859-7 107)))
+;;(add-hook 'python-mode-hook 'lambda-mode 1)
 
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 
 ;; Comint
-;; ---------------------------------------------------
 (require 'comint)
 (define-key comint-mode-map (kbd "M-") 'comint-next-input)
 (define-key comint-mode-map (kbd "M-") 'comint-previous-input)
@@ -13,7 +19,6 @@
 (define-key comint-mode-map [up] 'comint-previous-matching-input-from-input)
 
 ;; Auto-pair
-;; ---------------------------------------------------
 ;(autopair-global-mode)
 ;(add-hook 'lisp-mode-hook
 ;          '(lambda () (setq autopair-dont-activate t)))
@@ -33,7 +38,6 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)                                    
 
 ;; Debugging
-;; ---------------------------------------------------
 (defvar python-mode-map)
 (defun python-add-breakpoint ()
   "Inserts a python breakpoint using 'ipdb'"
@@ -43,5 +47,3 @@
   (insert "import ipdb; ipdb.set_trace()")
   (highlight-lines-matching-regexp "^[ 	]*import ipdb; ipdb.set_trace()"))
 (define-key python-mode-map (kbd "<f2>") 'python-add-breakpoint)
-
-(provide 'init-python)

@@ -1,12 +1,8 @@
-;; =============================================================================
-;; .emacs
-;; =============================================================================
-
 (setq load-path (cons "~/.emacs.d/" load-path))
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
 ;; General settings
-;; ===================================================
+;;
 (setq standard-indent 4)
 (setq-default tab-width 4)
 (setq scroll-step 1)                ; scroll line by line
@@ -26,7 +22,7 @@
 (setq show-paren-delay 0)
 
 ;; Mac OSX
-;; ===================================================
+;;
 (if (eq system-type 'darwin)
     (progn
 		(setq
@@ -43,7 +39,7 @@
 		(tool-bar-mode 0)))
 
 ;; Use Package Manager (MELPA)
-;; ===================================================
+;;
 (load "init-package")
 
 (require 'dropdown-list)
@@ -51,7 +47,7 @@
 (require 'zenburn-theme)
 
 ;; Display settings
-;; ===================================================
+;;
 (setq inhibit-startup-echo-area-message t)
 (setq inhibit-startup-message t)	; disable startup message
 (column-number-mode t)              ; show column numbers
@@ -87,8 +83,8 @@
 (require 'whitespace)
 
 ;; Keyboard bindings
-;; ===================================================
-(global-set-key (kbd "<C-tab>") 'bury-buffer)	; cycle buffers with Ctrl-TAB
+;;
+(global-set-key (kbd "<C-tab>") 'bury-buffer)
 (global-set-key [8]  'delete-backward-char)   	; C-h backspace
 (global-set-key (kbd "<f4>") 'fci-mode)
 (global-set-key (kbd "<f5>") 'whitespace-mode)
@@ -100,21 +96,21 @@
 (require 'cycle-buffer)
 (if (eq system-type 'darwin)
   (progn
-    (global-set-key (kbd "<C-f11>") 'cycle-buffer)   			; cycle open files
+    (global-set-key (kbd "<C-f11>") 'cycle-buffer)
     (global-set-key (kbd "<C-f12>") 'cycle-buffer-backward)))
 	
 (if (not (eq system-type 'darwin))
   (progn
-    (global-set-key (kbd "<f11>") 'cycle-buffer)   			; cycle open files
+    (global-set-key (kbd "<f11>") 'cycle-buffer)
     (global-set-key (kbd "<f12>") 'cycle-buffer-backward)))
 
 ;; Window Numbering
-;; ---------------------------------------------------
+;;
 (require 'window-numbering)
 (window-numbering-mode t)
 
 ;; Load CEDET
-;; ===================================================
+;;
 (require 'cedet)
 
 ;; Semantic settings
@@ -166,9 +162,8 @@
 ;(add-hook 'c-mode-common-hook 'c-folding-hook)
 
 
-;; ===================================================
 ;; Load ECB
-;; ===================================================
+;;
 (require 'ecb)
 
 (setq ecb-vc-enable-support t)
@@ -185,7 +180,7 @@
 )
 
 ;; Load Autocomplete
-;; ===================================================
+;;
 (require 'auto-complete)
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/lisp/auto-complete/dict")
@@ -197,7 +192,7 @@
 (setq ac-ignore-case nil)			; case sensitivity
 
 ;; Load Yasnippet
-;; ===================================================
+;;
 (require 'yasnippet)
 (setq yas/root-directory '("~/.emacs.d/lisp/yasnippet/snippets/"))
 ;(yas/initialize)
@@ -219,26 +214,12 @@
 ;;(add-hook 'after-save-hook 'snippet-mode-before-save)
 
 ;; Load Magit
-;; ===================================================
+;;
 (require 'magit)
 (if (eq system-type 'windows-nt)
 		(setq magit-git-executable "c:/program files/Git/bin/git.exe")
 	(setq magit-git-executable "/usr/bin/git")						;; correct in Slackware 14
 )
-
-;; Load Python
-;; ===================================================
-(require 'python-mode)
-
-;;(add-to-list 'load-path "~/.emacs.d/lisp/")
-;;(require 'ipython)
-;;(require 'tramp)
-;;(require 'python-pep8)
-;;(require 'python-pylint)
-;;(require 'lambda-mode)
-;;(add-hook 'python-mode-hook 'lambda-mode 1)
-;;(setq lambda-symbol (string (make-char 'greek-iso8859-7 107)))
-;;(add-hook 'python-mode-hook 'lambda-mode 1)
 
 ;; Load Go
 ;; ===================================================
@@ -259,6 +240,7 @@
 (load "init-cc")
 (load "init-js")
 (load "init-python")
+(load "init-ruby")
 ;;(require 'poptoshell)
 ;;(require 'flymake-cursor)
 
