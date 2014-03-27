@@ -3,25 +3,32 @@ COMPILE_FLAGS1=-batch --eval "(require 'package)" --eval "(package-initialize)" 
 COMPILE_FLAGS2=\")0)"
 
 ifeq ($(OS),Windows_NT)
-	RM=del
 	CP=copy
-	SED=C:\Bin\Nix\sed.exe
-	VER=$(shell ver)
+	ECHO=@echo
 	EMACS=C:\Dev\Emacs\Bin\emacs.exe
 	INSTALLDIR=${APPDATA}
 	NORMALIZE_PATH=$(subst /,\,$1)
+	RM=del
+	RMDIR=rmdir /s
 else
     UNAME_S := $(shell uname -s)
     ifeq ($(UNAME_S),Linux)
-		RM=rm
 		CP=cp
-		INSTALLDIR=~
+		ECHO=echo
 		EMACS=/usr/bin/emacs
+		INSTALLDIR=~
 		NORMALIZE_PATH=$1
+		RM=rm
+		RMDIR=rm -rf
     endif
     ifeq ($(UNAME_S),FreeBSD)
-		INSTALLDIR=~
+		CP=cp
+		ECHO=echo
 		EMACS=/usr/local/bin/emacs
+		INSTALLDIR=~
+		NORMALIZE_PATH=$1
+		RM=rm
+		RMDIR=rm -rf
     endif
     ifeq ($(UNAME_S),Darwin)
 #        @echo "Hello Darwin"
@@ -33,33 +40,33 @@ all: install compile
 install:
 
 ifneq ("$(wildcard ${INSTALLDIR}/.emacs.d/*.elc)","")
-	echo Deleting ${INSTALLDIR}/.emacs.d/*.elc files.
+	${ECHO} Deleting ${INSTALLDIR}/.emacs.d/*.elc files.
 	${RM} $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs.d/*.elc)
 endif
 
 ifneq ("$(wildcard ${INSTALLDIR}/.emacs.d/lisp/*.elc)","")
-	echo Deleting ${INSTALLDIR}/.emacs.d/lisp/*.elc files.
+	${ECHO} Deleting ${INSTALLDIR}/.emacs.d/lisp/*.elc files.
 	${RM} $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs.d/lisp/*.elc)
 endif
 
-	echo Copying emacs files.
+	${ECHO} Copying emacs files.
 	${CP} .emacs $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs)
 	${CP} $(call NORMALIZE_PATH,.emacs.d/*.el) $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs.d)
 
 ifeq ("$(wildcard ${INSTALLDIR}/.emacs.d/elpa)","")
-	echo Creating directory .emacs.d/elpa/
+	${ECHO} Creating directory .emacs.d/elpa/
 	mkdir $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs.d/elpa)
 endif
 
 ifeq ("$(wildcard ${INSTALLDIR}/.emacs.d/snippets)","")
-	echo Creating directory .emacs.d/snippets/
+	${ECHO} Creating directory .emacs.d/snippets/
 	mkdir $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs.d/snippets)
 endif
 
 
 compile:
 ifneq ("$(wildcard ${EMACS})","")
-	echo Byte compiling scripts.
+	${ECHO} Byte compiling scripts.
 	${EMACS} ${COMPILE_FLAGS1}~/.emacs.d/init-cc.el${COMPILE_FLAGS2}
 	${EMACS} ${COMPILE_FLAGS1}~/.emacs.d/init-js.el${COMPILE_FLAGS2}
 	${EMACS} ${COMPILE_FLAGS1}~/.emacs.d/init-package.el${COMPILE_FLAGS2}
@@ -70,7 +77,7 @@ else
 endif
 
 clean:
-	rmdir /s $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs.d)
+	${RMDIR} $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs.d)
 	${RM} $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs)
 
 profile:
