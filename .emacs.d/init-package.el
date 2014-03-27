@@ -32,6 +32,7 @@
 (require-package 'magit)
 (require-package 'python-mode)
 (require-package 'ruby-mode)
+(require-package 'rvm)
 (require-package 'web-mode)
 (require-package 'window-numbering)
 (require-package 'yasnippet)

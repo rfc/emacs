@@ -9,6 +9,7 @@ ifeq ($(OS),Windows_NT)
 	VER=$(shell ver)
 	EMACS=C:\Dev\Emacs\Bin\emacs.exe
 	INSTALLDIR=${APPDATA}
+	NORMALIZE_PATH=$(subst /,\,$1)
 else
     UNAME_S := $(shell uname -s)
     ifeq ($(UNAME_S),Linux)
@@ -16,6 +17,7 @@ else
 		CP=cp
 		INSTALLDIR=~
 		EMACS=/usr/bin/emacs
+		NORMALIZE_PATH=$1
     endif
     ifeq ($(UNAME_S),FreeBSD)
 		INSTALLDIR=~
@@ -32,26 +34,26 @@ install:
 
 ifneq ("$(wildcard ${INSTALLDIR}/.emacs.d/*.elc)","")
 	echo Deleting ${INSTALLDIR}/.emacs.d/*.elc files.
-	${RM} ${INSTALLDIR}/.emacs.d/*.elc
+	${RM} $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs.d/*.elc)
 endif
 
 ifneq ("$(wildcard ${INSTALLDIR}/.emacs.d/lisp/*.elc)","")
 	echo Deleting ${INSTALLDIR}/.emacs.d/lisp/*.elc files.
-	${RM} ${INSTALLDIR}/.emacs.d/lisp/*.elc
+	${RM} $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs.d/lisp/*.elc)
 endif
 
 	echo Copying emacs files.
-	${CP} .emacs ${INSTALLDIR}/.emacs
-	${CP} .emacs.d/*.el ${INSTALLDIR}/.emacs.d
+	${CP} .emacs $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs)
+	${CP} $(call NORMALIZE_PATH,.emacs.d/*.el) $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs.d)
 
 ifeq ("$(wildcard ${INSTALLDIR}/.emacs.d/elpa)","")
 	echo Creating directory .emacs.d/elpa/
-	mkdir ${INSTALLDIR}/.emacs.d/elpa
+	mkdir $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs.d/elpa)
 endif
 
 ifeq ("$(wildcard ${INSTALLDIR}/.emacs.d/snippets)","")
 	echo Creating directory .emacs.d/snippets/
-	mkdir ${INSTALLDIR}/.emacs.d/snippets
+	mkdir $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs.d/snippets)
 endif
 
 
@@ -68,8 +70,8 @@ else
 endif
 
 clean:
-	rmdir /s ${INSTALLDIR}/.emacs.d
-	${RM} ${INSTALLDIR}/.emacs
+	rmdir /s $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs.d)
+	${RM} $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs)
 
 profile:
 ifneq ("$(wildcard ${EMACS})","")
