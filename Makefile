@@ -52,6 +52,7 @@ endif
 	${ECHO} Copying emacs files.
 	${CP} .emacs $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs)
 	${CP} $(call NORMALIZE_PATH,.emacs.d/*.el) $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs.d)
+	${CP} $(call NORMALIZE_PATH,.emacs.d/lisp/*.el) $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs.d/lisp)
 
 ifeq ("$(wildcard ${INSTALLDIR}/.emacs.d/elpa)","")
 	${ECHO} Creating directory .emacs.d/elpa/
