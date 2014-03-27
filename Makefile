@@ -19,7 +19,7 @@ else
 		NORMALIZE_PATH=$1
 		RM=rm
 		RMDIR=rm -rf
-		EMACS=`which emacs`
+		EMACS=$(shell which emacs)
     endif
 endif
 
