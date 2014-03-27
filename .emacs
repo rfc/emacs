@@ -164,7 +164,8 @@
 
 ;; Load ECB
 ;;
-(require 'ecb)
+;(require 'ecb)		; slow load
+(require 'ecb-autoloads)
 
 (setq ecb-vc-enable-support t)
 (setq ecb-history-sort-method nil) 
