@@ -53,6 +53,7 @@
 (column-number-mode t)              ; show column numbers
 
 (autoload 'linum-mode "linum" "toggle line numbers on/off" t)
+(setq linum-format "%d ")
 
 (display-time-mode 1)               ; enable display time in modeline
 (setq display-time-24hr-format t
