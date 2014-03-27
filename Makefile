@@ -12,20 +12,14 @@ ifeq ($(OS),Windows_NT)
 	RMDIR=rmdir /s
 else
     UNAME_S := $(shell uname -s)
-	CP=cp
-	ECHO=echo
-	INSTALLDIR=~
-	NORMALIZE_PATH=$1
-	RM=rm
-	RMDIR=rm -rf
-    ifeq ($(UNAME_S),Linux)
-		EMACS=/usr/bin/emacs
-    endif
-    ifeq ($(UNAME_S),FreeBSD)
-		EMACS=/usr/local/bin/emacs
-    endif
-    ifeq ($(UNAME_S),Darwin)
-		EMACS=/usr/local/bin/emacs
+    ifeq ($(UNAME_S),$(filter $(UNAME_S),Linux FreeBSD Darwin))
+		CP=cp
+		ECHO=echo
+		INSTALLDIR=~
+		NORMALIZE_PATH=$1
+		RM=rm
+		RMDIR=rm -rf
+		EMACS=`which emacs`
     endif
 endif
 
