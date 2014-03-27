@@ -49,14 +49,14 @@ ifneq ("$(wildcard ${INSTALLDIR}/.emacs.d/lisp/*.elc)","")
 	${RM} $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs.d/lisp/*.elc)
 endif
 
-	${ECHO} Copying emacs files.
-	${CP} .emacs $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs)
-	${CP} $(call NORMALIZE_PATH,.emacs.d/*.el) $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs.d)
-	${CP} $(call NORMALIZE_PATH,.emacs.d/lisp/*.el) $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs.d/lisp)
-
 ifeq ("$(wildcard ${INSTALLDIR}/.emacs.d/elpa)","")
 	${ECHO} Creating directory .emacs.d/elpa/
 	mkdir $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs.d/elpa)
+endif
+
+ifeq ("$(wildcard ${INSTALLDIR}/.emacs.d/lisp)","")
+	${ECHO} Creating directory .emacs.d/lisp/
+	mkdir $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs.d/lisp)
 endif
 
 ifeq ("$(wildcard ${INSTALLDIR}/.emacs.d/snippets)","")
@@ -64,6 +64,10 @@ ifeq ("$(wildcard ${INSTALLDIR}/.emacs.d/snippets)","")
 	mkdir $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs.d/snippets)
 endif
 
+	${ECHO} Copying emacs files.
+	${CP} .emacs $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs)
+	${CP} $(call NORMALIZE_PATH,.emacs.d/*.el) $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs.d)
+	${CP} $(call NORMALIZE_PATH,.emacs.d/lisp/*.el) $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs.d/lisp)
 
 compile:
 ifneq ("$(wildcard ${EMACS})","")
