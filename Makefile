@@ -13,7 +13,8 @@ else
     UNAME_S := $(shell uname -s)
     ifeq ($(UNAME_S),$(filter $(UNAME_S),Linux FreeBSD))
         @echo "Hello Linux"
-		${BENCH}=/usr/bin/emacs
+		INSTALLDIR=~
+		EMACS=/usr/local/bin/emacs
     endif
     ifeq ($(UNAME_S),Darwin)
         @echo "Hello Darwin"
