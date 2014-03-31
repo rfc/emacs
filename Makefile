@@ -22,12 +22,25 @@ else
 		RM=rm
 		RMDIR=rm -rf
 		EMACS=$(shell which emacs)
+	else
+		ERROR_OS=yes
     endif
 endif
 
 all: install compile
 
 install:
+ifeq ($(ERROR_OS),yes)
+	$(error Error: Unknown OS.)
+endif
+
+ifeq ("$(wildcard ${INSTALLDIR})","")
+	$(error Error: Unknown path.)
+endif
+
+ifeq ("$(wildcard ${EMACS})","")
+	$(error Error: Emacs not found.)
+endif
 
 ifneq ("$(wildcard ${INSTALLDIR}/.emacs.d/*.elc)","")
 	${ECHO} Deleting ${INSTALLDIR}/.emacs.d/*.elc files.
@@ -73,7 +86,7 @@ ifneq ("$(wildcard ${EMACS})","")
 	${EMACS} ${COMPILE_FLAGS1}~/.emacs.d/init-python.el${COMPILE_FLAGS2}
 	${EMACS} ${COMPILE_FLAGS1}~/.emacs.d/init-ruby.el${COMPILE_FLAGS2}
 else
-	$(error Emacs not found (${EMACS}).)
+	$(error Error: Emacs not found (${EMACS}).)
 endif
 
 clean:
@@ -84,5 +97,5 @@ profile:
 ifneq ("$(wildcard ${EMACS})","")
 	${EMACS} ${PROFILE_FLAGS}
 else
-	$(error Emacs not found (${EMACS}).)
+	$(error Error: Emacs not found (${EMACS}).)
 endif
