@@ -4,6 +4,8 @@ Emacs configuration file for Emacs version 24.3.
 
 # Installation
 
+Clone this repository.
+
 Windows 7/8:
 
 - Change EMACS executable location in Makefile.
