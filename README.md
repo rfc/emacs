@@ -4,14 +4,19 @@ Emacs configuration file for Emacs version 24.3.
 
 # Installation
 
-Windows:
+Windows 7/8:
+
+- Change EMACS executable location in Makefile.
+- Run `make`
+
+Linux/Mac OSX/FreeBSD
 
 - Run `make`
 
-Linux/Mac OSX/FreeBSD:
+On Linux/FreeBSD, Emacs location will be automatically determined from the environment.
 
-- Run `make`
+On Mac OSX, install Emacs using Homebrew (http://brew.sh/). Using the following Emacs packages will not work without further customization:
 
-
-For Mac OSX, install Emacs using Brew. Using the Emacs package from http://emacsformacosx.com will not work without further customization.
+- EmacsForMacOSX ([http://emacsformacosx.com](http://emacsformacosx.com)) 
+- Aquamacs ([http://aquamacs.org](http://aquamacs.org)) 
 
