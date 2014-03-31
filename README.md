@@ -11,7 +11,7 @@ Windows 7/8:
 - Change EMACS executable location in Makefile.
 - Run `make`
 
-Linux/Mac OSX/FreeBSD
+Linux/Mac OSX/FreeBSD:
 
 - Run `make`
 
