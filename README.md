@@ -17,7 +17,7 @@ Linux/Mac OSX/FreeBSD:
 
 On Linux/FreeBSD, Emacs location will be automatically determined from the environment.
 
-On Mac OSX, install Emacs using Homebrew (http://brew.sh/). Using the following Emacs packages will not work without further customization:
+On Mac OSX, install Emacs using Homebrew ([http://brew.sh](http://brew.sh)). Using the Emacs packages listed below will not work without further customization:
 
 - EmacsForMacOSX ([http://emacsformacosx.com](http://emacsformacosx.com)) 
 - Aquamacs ([http://aquamacs.org](http://aquamacs.org)) 

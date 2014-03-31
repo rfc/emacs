@@ -7,7 +7,6 @@
 (setq-default tab-width 4)
 (setq scroll-step 1)                ; scroll line by line
 (setq-default indent-tabs-mode nil) ; turn off tab character
-;(mouse-wheel-mode t)                ; enable mouse wheel scrolling
 (setq make-backup-files nil)        ; no backup~ files
 (setq auto-save-default nil)        ; no #autosave# files
 (line-number-mode 1)                ; Show line-number in the mode line
