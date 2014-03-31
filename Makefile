@@ -3,13 +3,16 @@ COMPILE_FLAGS1=-batch --eval "(require 'package)" --eval "(package-initialize)" 
 COMPILE_FLAGS2=\")0)"
 
 ifeq ($(OS),Windows_NT)
-	CP=copy
+	CP=@copy
 	ECHO=@echo
-	EMACS=C:\Dev\Emacs\Bin\emacs.exe
+	EMACS=@								# echo off
+	EMACS+=C:\Dev\Emacs\Bin\emacs.exe	# figure out a one-liner
 	INSTALLDIR=${APPDATA}
 	NORMALIZE_PATH=$(subst /,\,$1)
 	RM=del
 	RMDIR=rmdir /s
+	SHELL=$(COMSPEC)
+	TEST=$(shell /c for /f "tokens=4-5 delims=. " %%i in ('ver') do echo %%i.%%j)
 else
     UNAME_S := $(shell uname -s)
     ifeq ($(UNAME_S),$(filter $(UNAME_S),Linux FreeBSD Darwin))
@@ -26,7 +29,8 @@ endif
 all: install compile
 
 install:
-
+	$(TEST)
+#	$(error QUITTING)
 ifneq ("$(wildcard ${INSTALLDIR}/.emacs.d/*.elc)","")
 	${ECHO} Deleting ${INSTALLDIR}/.emacs.d/*.elc files.
 	${RM} $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs.d/*.elc)
@@ -35,6 +39,11 @@ endif
 ifneq ("$(wildcard ${INSTALLDIR}/.emacs.d/lisp/*.elc)","")
 	${ECHO} Deleting ${INSTALLDIR}/.emacs.d/lisp/*.elc files.
 	${RM} $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs.d/lisp/*.elc)
+endif
+
+ifeq ("$(wildcard ${INSTALLDIR}/.emacs.d/)","")
+	${ECHO} Creating directory .emacs.d/
+	mkdir $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs.d/)
 endif
 
 ifeq ("$(wildcard ${INSTALLDIR}/.emacs.d/elpa)","")
