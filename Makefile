@@ -1,6 +1,6 @@
 PROFILE_FLAGS=-Q -l ./.emacs.d/lisp/profile-dotemacs.el -f profile-dotemacs
-COMPILE_FLAGS1=-batch --eval "(require 'package)" --eval "(package-initialize)" --eval "(byte-compile-file (expand-file-name \"
-COMPILE_FLAGS2=\")0)"
+COMPILE_FLAGS=-batch --eval "(require 'package)" --eval "(package-initialize)" --eval "(byte-compile-file (expand-file-name \"~/.emacs.d/$(file)\")0)"
+CUSTOM_ELISP=init-cc.el init-js.el init-package.el init-python.el init-ruby.el
 
 ifeq ($(OS),Windows_NT)
 	CP=@copy
@@ -11,7 +11,6 @@ ifeq ($(OS),Windows_NT)
 	NORMALIZE_PATH=$(subst /,\,$1)
 	RM=del
 	RMDIR=rmdir /s
-	SHELL=$(COMSPEC)
 else
     UNAME_S := $(shell uname -s)
     ifeq ($(UNAME_S),$(filter $(UNAME_S),Linux FreeBSD Darwin))
@@ -80,11 +79,7 @@ endif
 compile:
 ifneq ("$(wildcard ${EMACS})","")
 	${ECHO} Byte compiling scripts.
-	${EMACS} ${COMPILE_FLAGS1}~/.emacs.d/init-cc.el${COMPILE_FLAGS2}
-	${EMACS} ${COMPILE_FLAGS1}~/.emacs.d/init-js.el${COMPILE_FLAGS2}
-	${EMACS} ${COMPILE_FLAGS1}~/.emacs.d/init-package.el${COMPILE_FLAGS2}
-	${EMACS} ${COMPILE_FLAGS1}~/.emacs.d/init-python.el${COMPILE_FLAGS2}
-	${EMACS} ${COMPILE_FLAGS1}~/.emacs.d/init-ruby.el${COMPILE_FLAGS2}
+	$(foreach file,$(CUSTOM_ELISP),${EMACS} ${COMPILE_FLAGS})
 else
 	$(error Error: Emacs not found (${EMACS}).)
 endif
