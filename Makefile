@@ -10,7 +10,7 @@ ifeq ($(OS),Windows_NT)
 	INSTALLDIR=${APPDATA}
 	NORMALIZE_PATH=$(subst /,\,$1)
 	RM=del
-	RMDIR=rmdir /s
+	RMDIR=rmdir /s /q
 else
     UNAME_S := $(shell uname -s)
     ifeq ($(UNAME_S),$(filter $(UNAME_S),Linux FreeBSD Darwin))

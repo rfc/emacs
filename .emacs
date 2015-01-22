@@ -1,5 +1,5 @@
-(setq load-path (cons "~/.emacs.d/" load-path))
-(add-to-list 'load-path "~/.emacs.d/lisp/")
+(setq load-path (cons "~/.emacs.d/lisp/" load-path))
+(add-to-list 'load-path "~/.emacs.d/lisp/vendor/")
 
 ;; General settings
 ;;
@@ -19,6 +19,7 @@
 (show-paren-mode 1)					; show matching parenthesis
 (global-auto-revert-mode t)			; auto reload files
 (setq show-paren-delay 0)
+(desktop-save-mode 1)
 
 ;; Mac OSX
 ;;
@@ -164,8 +165,8 @@
 
 ;; Load ECB
 ;;
-;(require 'ecb)		; slow load
-(require 'ecb-autoloads)
+(require 'ecb)		; slow load
+;(require 'ecb-autoloads)   ; bug in emacs 24
 
 (setq ecb-vc-enable-support t)
 (setq ecb-history-sort-method nil) 

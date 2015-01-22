@@ -25,6 +25,7 @@
 (require-package 'ecb)
 (require-package 'fill-column-indicator)
 (require-package 'flymake-cursor)
+(require-package 'gist)
 (require-package 'go-mode)
 (require-package 'highlight-parentheses)
 (require-package 'highlight-symbol)
