@@ -70,13 +70,13 @@
 
 ;(add-to-list 'default-frame-alist '(font .  "DejaVu Sans Mono-10" ))
 ;(set-frame-font "DejaVu Sans Mono-10" nil t)
-(if (eq system-type 'darwin)
-		(progn
-			(setq
-			set-face-attribute 'default nil :family "Consolas"
-			set-face-attribute 'default nil :height 100))
-	(set-face-attribute 'default nil :family "Terminus")
-	(set-face-attribute 'default nil :height 100))
+;(if (eq system-type 'darwin)
+;		(progn
+;			(setq
+;			set-face-attribute 'default nil :family "Consolas"
+;			set-face-attribute 'default nil :height 100))
+;	(set-face-attribute 'default nil :family "Terminus")
+;	(set-face-attribute 'default nil :height 100))
 
 (if (eq system-type 'windows-nt)
 	(set-frame-size (selected-frame) 140 70))

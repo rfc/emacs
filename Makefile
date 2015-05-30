@@ -1,5 +1,5 @@
 PROFILE_FLAGS=-Q -l ./.emacs.d/lisp/profile-dotemacs.el -f profile-dotemacs
-COMPILE_FLAGS=-batch --eval "(require 'package)" --eval "(package-initialize)" --eval "(byte-compile-file (expand-file-name \"~/.emacs.d/$(file)\")0)"
+COMPILE_FLAGS=-batch --eval "(require 'package)" --eval "(package-initialize)" --eval "(byte-compile-file (expand-file-name \"~/.emacs.d/lisp/$(file)\")0)"
 CUSTOM_ELISP=init-cc.el init-js.el init-package.el init-python.el init-ruby.el
 
 ifeq ($(OS),Windows_NT)
@@ -66,6 +66,11 @@ ifeq ("$(wildcard ${INSTALLDIR}/.emacs.d/lisp)","")
 	mkdir $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs.d/lisp)
 endif
 
+ifeq ("$(wildcard ${INSTALLDIR}/.emacs.d/lisp/vendor)","")
+	${ECHO} Creating directory .emacs.d/lisp/vendor/
+	mkdir $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs.d/lisp/vendor)
+endif
+
 ifeq ("$(wildcard ${INSTALLDIR}/.emacs.d/snippets)","")
 	${ECHO} Creating directory .emacs.d/snippets/
 	mkdir $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs.d/snippets)
@@ -73,8 +78,8 @@ endif
 
 	${ECHO} Copying emacs files.
 	${CP} .emacs $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs)
-	${CP} $(call NORMALIZE_PATH,.emacs.d/*.el) $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs.d)
 	${CP} $(call NORMALIZE_PATH,.emacs.d/lisp/*.el) $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs.d/lisp)
+	${CP} $(call NORMALIZE_PATH,.emacs.d/lisp/vendor/*.el) $(call NORMALIZE_PATH,${INSTALLDIR}/.emacs.d/lisp/vendor)
 
 compile:
 ifneq ("$(wildcard ${EMACS})","")
