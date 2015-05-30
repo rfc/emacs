@@ -222,7 +222,7 @@
 		(setq magit-git-executable "c:/program files/Git/bin/git.exe")
 	(setq magit-git-executable "/usr/bin/git")						;; correct in Slackware 14
 )
-
+(setq magit-last-seen-setup-instructions "1.4.0")
 ;; Load Go
 ;; ===================================================
 ;;(require 'go-mode-load)
