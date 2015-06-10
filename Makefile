@@ -1,4 +1,4 @@
-PROFILE_FLAGS=-Q -l ./.emacs.d/lisp/profile-dotemacs.el -f profile-dotemacs
+PROFILE_FLAGS=-Q -l ./.emacs.d/lisp/vendor/profile-dotemacs.el -f profile-dotemacs
 COMPILE_FLAGS=-batch --eval "(require 'package)" --eval "(package-initialize)" --eval "(byte-compile-file (expand-file-name \"~/.emacs.d/lisp/$(file)\")0)"
 CUSTOM_ELISP=init-cc.el init-js.el init-package.el init-python.el init-ruby.el
 
