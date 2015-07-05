@@ -85,7 +85,7 @@
 
 ;; Keyboard bindings
 ;;
-(global-set-key (kbd "<C-tab>") 'bury-buffer)
+(global-set-key (kbd "C-<tab>") 'bury-buffer)
 (global-set-key [8]  'delete-backward-char)   	; C-h backspace
 (global-set-key (kbd "<f4>") 'fci-mode)
 (global-set-key (kbd "<f5>") 'whitespace-mode)
@@ -95,11 +95,11 @@
 (global-set-key (kbd "<f9>") 'speedbar)
 
 ; org-mode
-(global-set-key "\C-cl" 'org-store-link)
-(global-set-key "\C-cc" 'org-capture)
-(global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-cb" 'org-iswitchb)
-(global-set-key "\C-cr" 'remember)
+(global-set-key (kbd "C-l") 'org-store-link)
+(global-set-key (kbd "C-c") 'org-capture)
+(global-set-key (kbd "C-a") 'org-agenda)
+(global-set-key (kbd "C-b") 'org-iswitchb)
+(global-set-key (kbd "C-r") 'remember)
 
 (require 'cycle-buffer)
 (if (eq system-type 'darwin)
