@@ -94,6 +94,13 @@
 ;(global-set-key (kbd "<C-f7>") 'ecb-deactivate)
 (global-set-key (kbd "<f9>") 'speedbar)
 
+; org-mode
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-cc" 'org-capture)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cb" 'org-iswitchb)
+(global-set-key "\C-cr" 'remember)
+
 (require 'cycle-buffer)
 (if (eq system-type 'darwin)
   (progn
