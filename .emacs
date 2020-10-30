@@ -97,7 +97,7 @@
 ; org-mode
 (global-set-key (kbd "C-l") 'org-store-link)
 (global-set-key (kbd "C-c") 'org-capture)
-(global-set-key (kbd "C-a") 'org-agenda)
+;(global-set-key (kbd "C-a") 'org-agenda)
 (global-set-key (kbd "C-b") 'org-iswitchb)
 (global-set-key (kbd "C-r") 'remember)
 
