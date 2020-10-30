@@ -222,6 +222,11 @@
 ;;  (when (eq major-mode 'snippet-mode) (reload-snippets)))
 ;;(add-hook 'after-save-hook 'snippet-mode-before-save)
 
+;; Load YAML mode                                                                                    
+(require 'yaml-mode)                                                                                
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))                                             
+(add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode)) 
+
 ;; Load Magit
 ;;
 (require 'magit)

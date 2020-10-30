@@ -38,4 +38,5 @@
 (require-package 'web-mode)
 (require-package 'window-numbering)
 (require-package 'yasnippet)
+(require-package 'yaml-mode)
 (require-package 'zenburn-theme)
