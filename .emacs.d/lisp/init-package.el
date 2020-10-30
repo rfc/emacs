@@ -2,8 +2,9 @@
 
 (setq package-archives '(("elpa" . "http://tromey.com/elpa/") 
                           ("gnu" . "http://elpa.gnu.org/packages/")
-                          ("marmalade" . "http://marmalade-repo.org/packages/")
-						  ("melpa" . "http://melpa.milkbox.net/packages/")
+						  ("stable-melpa" . "https://stable.melpa.org/packages/")
+;                         ("marmalade" . "http://marmalade-repo.org/packages/")
+						  ("melpa" . "http://melpa.org/packages/")
 						  ("org" . "http://orgmode.org/elpa/")))
  
 (defun require-package (package &optional min-version no-refresh)
@@ -21,7 +22,7 @@
 (require-package 'auto-complete)
 (require-package 'auto-complete-clang)
 (require-package 'autopair)
-(require-package 'dropdown-list)
+;(require-package 'dropdown-list)
 (require-package 'ecb)
 (require-package 'fill-column-indicator)
 (require-package 'flymake-cursor)
